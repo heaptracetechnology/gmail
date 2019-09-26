@@ -35,4 +35,4 @@ $ omg run sendMail -a from=<SENDER_EMAIL_ADDRESS> -a to=[LIST_OF_RECEIVER_EMAIL_
 **Note**: the OMG CLI requires [Docker](https://docs.docker.com/install/) to be installed.
 
 ## License
-[MIT License](https://github.com/heaptracetechnology/google-sheets/blob/master/LICENSE).
+[MIT License](https://github.com/heaptracetechnology/gmail/blob/master/LICENSE).
