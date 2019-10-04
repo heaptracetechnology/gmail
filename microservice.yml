@@ -81,7 +81,7 @@ actions:
       type: map
       contentType: application/json
   receive:
-    help: Start receiving emails.
+    help: Start receiving emails from inbox.
     events:
       mail:
         help: Triggered anytime when any new email is occurred in mail inbox.
@@ -95,7 +95,7 @@ actions:
             type: string
             in: requestBody
             required: true
-            help: The text pattern to filter sender, subject and message body.
+            help: The access token to use gmail API.
         http: 
           port: 3000
           subscribe:
