@@ -6,6 +6,8 @@ RUN go get golang.org/x/oauth2/google
 
 RUN go get golang.org/x/oauth2
 
+RUN go get github.com/cloudevents/sdk-go
+
 RUN go get github.com/gorilla/mux
 
 WORKDIR /go/src/github.com/heaptracetechnology/gmail

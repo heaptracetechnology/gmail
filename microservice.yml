@@ -18,13 +18,29 @@ info:
     name: MIT
     url: https://opensource.org/licenses/MIT
 actions:
+  authorization:
+    help: This will return URL, copy paste URL on browser and get authorization code.
+    http:
+      port: 3000
+      method: post
+      path: /authorization
+      contentType: application/json
+    output:
+      type: map
+      contentType: application/json
   accessToken:
-    help: This will return URL, copy paste URL on browser and get access token.
+    help: Return token object with access token, refresh token , token type and expiry.
     http:
       port: 3000
       method: post
       path: /accessToken
       contentType: application/json
+    arguments:
+      authorizationCode: 
+        type: string
+        in: requestBody
+        required: true
+        help: The authorizationCode code.
     output:
       type: map
       contentType: application/json
@@ -41,7 +57,7 @@ actions:
         in: requestBody
         required: true
         help: The access token.
-      from: 
+      userId: 
         type: string
         in: requestBody
         required: true
@@ -64,6 +80,52 @@ actions:
     output:   
       type: map
       contentType: application/json
+  messageList:
+    help: List all the messages from mailbox.
+    http:
+      port: 3000
+      method: post
+      path: /messageList
+      contentType: application/json
+    arguments:
+      accessToken: 
+        type: string
+        in: requestBody
+        required: true
+        help: The access token.
+      userId: 
+        type: string
+        in: requestBody
+        required: true
+        help: The sender email address.
+    output:   
+      type: map
+      contentType: application/json
+  receive:
+    help: Start receiving emails.
+    events:
+      mail:
+        help: Triggered anytime when any new email is occurred in mail inbox.
+        arguments: 
+          userId:
+            type: string
+            in: requestBody
+            required: true
+            help: The receiver account email address.
+          accessToken:
+            type: string
+            in: requestBody
+            required: true
+            help: The text pattern to filter sender, subject and message body.
+        http: 
+          port: 3000
+          subscribe:
+            method: post
+            path: /receive
+            contentType: application/json
+        output:
+          contentType: application/json
+          type: map
 environment:
   CREDENTIAL_JSON:
     type: string

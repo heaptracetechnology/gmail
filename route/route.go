@@ -26,6 +26,12 @@ var routes = Routes{
         gmail.HealthCheck,
     },
     Route{
+        "Authorization",
+        "POST",
+        "/authorization",
+        gmail.Authorization,
+    },
+    Route{
         "AccessToken",
         "POST",
         "/accessToken",
@@ -36,6 +42,18 @@ var routes = Routes{
         "POST",
         "/sendMail",
         gmail.SendMail,
+    },
+    Route{
+        "ReceiveEmail",
+        "POST",
+        "/receive",
+        gmail.ReceiveMail,
+    },
+    Route{
+        "MessageList",
+        "POST",
+        "/messageList",
+        gmail.MessageList,
     },
 }
 
