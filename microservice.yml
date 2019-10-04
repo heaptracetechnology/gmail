@@ -80,27 +80,6 @@ actions:
     output:   
       type: map
       contentType: application/json
-  messageList:
-    help: List all the messages from mailbox.
-    http:
-      port: 3000
-      method: post
-      path: /messageList
-      contentType: application/json
-    arguments:
-      accessToken: 
-        type: string
-        in: requestBody
-        required: true
-        help: The access token.
-      userId: 
-        type: string
-        in: requestBody
-        required: true
-        help: The sender email address.
-    output:   
-      type: map
-      contentType: application/json
   receive:
     help: Start receiving emails.
     events:
