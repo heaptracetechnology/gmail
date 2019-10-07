@@ -34,6 +34,7 @@ type GmailArgument struct {
 	Body              string   `json:"body"`
 	AuthorizationCode string   `json:"authorizationCode"`
 	AccessToken       string   `json:"accessToken"`
+	TokenObj          Token    `json:"token"`
 }
 
 //Token struct
@@ -137,6 +138,50 @@ func AccessToken(responseWriter http.ResponseWriter, request *http.Request) {
 	}
 
 	bytes, _ := json.Marshal(token)
+	result.WriteJSONResponse(responseWriter, bytes, http.StatusOK)
+}
+
+//RefreshToken Gmail
+func RefreshToken(responseWriter http.ResponseWriter, request *http.Request) {
+
+	var base64CredentialsJSON = os.Getenv("CREDENTIAL_JSON")
+
+	decodedJSON, err := base64.StdEncoding.DecodeString(base64CredentialsJSON)
+	if err != nil {
+		result.WriteErrorResponseString(responseWriter, err.Error())
+		return
+	}
+
+	decoder := json.NewDecoder(request.Body)
+	var gmailArgument GmailArgument
+	reqErr := decoder.Decode(&gmailArgument)
+	if reqErr != nil {
+		result.WriteErrorResponseString(responseWriter, reqErr.Error())
+		return
+	}
+
+	conf, confErr := google.ConfigFromJSON(decodedJSON, gmail.MailGoogleComScope)
+	if confErr != nil {
+		result.WriteErrorResponseString(responseWriter, confErr.Error())
+		return
+	}
+
+	expTime, _ := time.Parse(time.RFC3339, gmailArgument.TokenObj.Expiry)
+
+	tok := oauth2.Token{
+		AccessToken:  gmailArgument.TokenObj.AccessToken,
+		RefreshToken: gmailArgument.TokenObj.RefreshToken,
+		Expiry:       expTime,
+		TokenType:    gmailArgument.TokenObj.TokenType,
+	}
+
+	updatedToken, updatedTokenErr := conf.TokenSource(context.TODO(), &tok).Token()
+	if updatedTokenErr != nil {
+		result.WriteErrorResponseString(responseWriter, updatedTokenErr.Error())
+		return
+	}
+
+	bytes, _ := json.Marshal(updatedToken)
 	result.WriteJSONResponse(responseWriter, bytes, http.StatusOK)
 }
 

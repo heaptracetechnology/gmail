@@ -16,6 +16,10 @@ gmail authorization
 ```coffee
 gmail accessToken authorizationCode:'authorization code generated from URL of authorization'
 ```
+##### Refresh Token
+```coffee
+gmail refreshToken token:'{"access_token": "access token","token_type": "Bearer","refresh_token": "refresh token","expiry": "2019-10-04T15:57:07.922121141Z"}'
+```
 ##### Send Mail
 ```coffee
 gmail sendMail accessToken:'access token' from:'abc@example.com' to:'["xyz@example.com",mnop@example.com]' subject:'mail subject' body:'mail body' accessToken:'accessToken'
@@ -37,6 +41,10 @@ omg run authorization -e CREDENTIAL_JSON=<BASE64_DATA_OF_CREDENTIAL_JSON_FILE>
 ##### Access Token
 ```shell
 $ omg run accessToken -a authorizationCode=<AUTHORIZATION_CODE> -e CREDENTIAL_JSON=<BASE64_DATA_OF_CREDENTIAL_JSON_FILE>
+```
+##### Refresh Token
+```shell
+$ omg run refreshToken -a token=<TOKEN_MAPPED_OBJECT> -e CREDENTIAL_JSON=<BASE64_DATA_OF_CREDENTIAL_JSON_FILE>
 ```
 ##### Send Mail
 ```shell

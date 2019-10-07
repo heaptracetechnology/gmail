@@ -17,6 +17,147 @@ var (
 	emailAddress   = os.Getenv("GMAIL_EMAIL_ADDRESS")
 )
 
+var _ = Describe("AccessToken with invalid base64 CREDENTIAL_JSON", func() {
+
+	os.Setenv("CREDENTIAL_JSON", "mockJSON")
+
+	gmail := GmailArgument{}
+	requestBody := new(bytes.Buffer)
+	jsonErr := json.NewEncoder(requestBody).Encode(gmail)
+	if jsonErr != nil {
+		log.Fatal(jsonErr)
+	}
+
+	request, err := http.NewRequest("POST", "/authorization", requestBody)
+	if err != nil {
+		log.Fatal(err)
+	}
+	recorder := httptest.NewRecorder()
+	handler := http.HandlerFunc(AccessToken)
+	handler.ServeHTTP(recorder, request)
+
+	Describe("Authorization", func() {
+		Context("authorization", func() {
+			It("Should result http.StatusBadRequest", func() {
+				Expect(http.StatusBadRequest).To(Equal(recorder.Code))
+			})
+		})
+	})
+})
+
+var _ = Describe("AccessToken with invalid args", func() {
+
+	os.Setenv("CREDENTIAL_JSON", "mockJSON")
+
+	gmail := []byte(`{"status":false}`)
+	requestBody := new(bytes.Buffer)
+	jsonErr := json.NewEncoder(requestBody).Encode(gmail)
+	if jsonErr != nil {
+		log.Fatal(jsonErr)
+	}
+
+	request, err := http.NewRequest("POST", "/authorization", requestBody)
+	if err != nil {
+		log.Fatal(err)
+	}
+	recorder := httptest.NewRecorder()
+	handler := http.HandlerFunc(AccessToken)
+	handler.ServeHTTP(recorder, request)
+
+	Describe("Authorization", func() {
+		Context("authorization", func() {
+			It("Should result http.StatusBadRequest", func() {
+				Expect(http.StatusBadRequest).To(Equal(recorder.Code))
+			})
+		})
+	})
+})
+
+var _ = Describe("Refresh Token with invalid CREDENTIAL_JSON", func() {
+
+	os.Setenv("CREDENTIAL_JSON", "mockENV")
+
+	gmail := []byte(`{"status":false}`)
+	requestBody := new(bytes.Buffer)
+	jsonErr := json.NewEncoder(requestBody).Encode(gmail)
+	if jsonErr != nil {
+		log.Fatal(jsonErr)
+	}
+
+	request, err := http.NewRequest("POST", "/refreshToken", requestBody)
+	if err != nil {
+		log.Fatal(err)
+	}
+	recorder := httptest.NewRecorder()
+	handler := http.HandlerFunc(RefreshToken)
+	handler.ServeHTTP(recorder, request)
+
+	Describe("Refresh Token", func() {
+		Context("Refresh Token", func() {
+			It("Should result http.StatusBadRequest", func() {
+				Expect(http.StatusBadRequest).To(Equal(recorder.Code))
+			})
+		})
+	})
+})
+
+var _ = Describe("Refresh Token with invalid args", func() {
+
+	os.Setenv("CREDENTIAL_JSON", credentialJSON)
+
+	gmail := []byte(`{"status":false}`)
+	requestBody := new(bytes.Buffer)
+	jsonErr := json.NewEncoder(requestBody).Encode(gmail)
+	if jsonErr != nil {
+		log.Fatal(jsonErr)
+	}
+
+	request, err := http.NewRequest("POST", "/refreshToken", requestBody)
+	if err != nil {
+		log.Fatal(err)
+	}
+	recorder := httptest.NewRecorder()
+	handler := http.HandlerFunc(RefreshToken)
+	handler.ServeHTTP(recorder, request)
+
+	Describe("Refresh Token", func() {
+		Context("Refresh Token", func() {
+			It("Should result http.StatusBadRequest", func() {
+				Expect(http.StatusBadRequest).To(Equal(recorder.Code))
+			})
+		})
+	})
+})
+
+var _ = Describe("Refresh Token with invalid token object", func() {
+
+	os.Setenv("CREDENTIAL_JSON", credentialJSON)
+
+	tok := Token{AccessToken: "mockAccessToken", TokenType: "mockTokenType", Expiry: "mockExpiry"}
+	gmail := GmailArgument{TokenObj: tok}
+	requestBody := new(bytes.Buffer)
+	jsonErr := json.NewEncoder(requestBody).Encode(gmail)
+	if jsonErr != nil {
+		log.Fatal(jsonErr)
+	}
+
+	request, err := http.NewRequest("POST", "/refreshToken", requestBody)
+	if err != nil {
+		log.Fatal(err)
+	}
+	recorder := httptest.NewRecorder()
+	handler := http.HandlerFunc(RefreshToken)
+	handler.ServeHTTP(recorder, request)
+
+	Describe("Refresh Token", func() {
+		Context("Refresh Token", func() {
+			It("Should result http.StatusOK", func() {
+				Expect(http.StatusOK).To(Equal(recorder.Code))
+			})
+		})
+	})
+})
+
 var _ = Describe("Authorization with valid base64 CREDENTIAL_JSON", func() {
 
 	gmail := GmailArgument{}

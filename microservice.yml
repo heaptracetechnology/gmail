@@ -44,6 +44,22 @@ actions:
     output:
       type: map
       contentType: application/json
+  refreshToken:
+    help: Return new token object with access token, refresh token ,token type and expiry.
+    http:
+      port: 3000
+      method: post
+      path: /refreshToken
+      contentType: application/json
+    arguments:
+      token: 
+        type: map
+        in: requestBody
+        required: true
+        help: The old token object with access token, refresh token ,token type and expiry are required.
+    output:
+      type: map
+      contentType: application/json
   sendMail:
     help: Send mail.
     http:

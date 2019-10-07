@@ -49,6 +49,12 @@ var routes = Routes{
         "/receive",
         gmail.ReceiveMail,
     },
+    Route{
+        "RefreshToken",
+        "POST",
+        "/refreshToken",
+        gmail.RefreshToken,
+    },
 }
 
 //NewRouter func
