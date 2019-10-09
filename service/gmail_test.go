@@ -158,7 +158,7 @@ var _ = Describe("Refresh Token with invalid token object", func() {
 	})
 })
 
-var _ = Describe("Authorization with valid base64 CREDENTIAL_JSON", func() {
+var _ = Describe("HealthCheck", func() {
 
 	gmail := GmailArgument{}
 	requestBody := new(bytes.Buffer)
