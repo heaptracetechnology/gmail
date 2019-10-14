@@ -634,7 +634,8 @@ func DeleteFilter(responseWriter http.ResponseWriter, request *http.Request) {
 		return
 	}
 
-	bytes, _ := json.Marshal(deleteFilter)
+	message := Message{Success: true, Message: "Filter deleted successfully", StatusCode: http.StatusOK}
+	bytes, _ := json.Marshal(message)
 	result.WriteJSONResponse(responseWriter, bytes, http.StatusOK)
 }
 
