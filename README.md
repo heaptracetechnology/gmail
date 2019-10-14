@@ -28,31 +28,31 @@ gmail sendMail accessToken:'access token' userId:'abc@example.com' to:'["xyz@exa
 ```
 ##### Create Label
 ```coffee
-omg run createLabel accessToken:'access token' userId:'abc@example.com' name:'OMG Label' backgroundColor:'#fce8b3' textColor:'#d5ae49' labelListVisibility:'labelShow' messageListVisibility:'show' 
+gmail createLabel accessToken:'access token' userId:'abc@example.com' name:'OMG Label' backgroundColor:'#fce8b3' textColor:'#d5ae49' labelListVisibility:'labelShow' messageListVisibility:'show' 
 ```
 ##### Delete Label:
 ```coffee
-omg run deleteLabel accessToken:'access token' userId:'abc@example.com' labelId:'label Id'
+gmail deleteLabel accessToken:'access token' userId:'abc@example.com' labelId:'label Id'
 ```
 ##### Patch Label:
 ```coffee
-omg run patchLabel accessToken:'access token' userId:'abc@example.com' name:'OMG Label' backgroundColor:'#fce8b3' textColor:'#d5ae49' labelListVisibility:'labelShow' messageListVisibility:'show' 
+gmail patchLabel accessToken:'access token' userId:'abc@example.com' name:'OMG Label' backgroundColor:'#fce8b3' textColor:'#d5ae49' labelListVisibility:'labelShow' messageListVisibility:'show' 
 ```
 ##### List Label
 ```coffee
-omg run labelList accessToken:'access token' userId:'abc@example.com' 
+gmail labelList accessToken:'access token' userId:'abc@example.com' 
 ```
 ##### Create Filter
 ```coffee
-omg run createFilter accessToken:'access token' userId:'abc@example.com'  addLabelId='Label Id' removeLabelId='Label Id' excludeChats=false from:'abc@example.com' to:'xyz@example.com' subject:'Mail subject' hasAttachment=false negatedQuery:'Negated query for filter' query:'query for filter' size=1 sizeComparison:smaller 
+gmail createFilter accessToken:'access token' userId:'abc@example.com'  addLabelId='Label Id' removeLabelId='Label Id' excludeChats=false from:'abc@example.com' to:'xyz@example.com' subject:'Mail subject' hasAttachment=false negatedQuery:'Negated query for filter' query:'query for filter' size=1 sizeComparison:smaller 
 ```
 ##### Delete Filter
 ```coffee
-omg run deleteFilter accessToken:'access token' userId:'abc@example.com' filterId:'filter Id'
+gmail deleteFilter accessToken:'access token' userId:'abc@example.com' filterId:'filter Id'
 ```
 ##### List Filter
 ```coffee
-omg run filterList accessToken:'access token' userId:'abc@example.com' 
+gmail filterList accessToken:'access token' userId:'abc@example.com' 
 ```
 ##### Receive Mail
 ```coffee
