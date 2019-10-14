@@ -55,6 +55,48 @@ var routes = Routes{
         "/refreshToken",
         gmail.RefreshToken,
     },
+    Route{
+        "CreateLabel",
+        "POST",
+        "/createLabel",
+        gmail.CreateLabel,
+    },
+    Route{
+        "DeleteLabel",
+        "POST",
+        "/deleteLabel",
+        gmail.DeleteLabel,
+    },
+    Route{
+        "PatchLabel",
+        "POST",
+        "/patchLabel",
+        gmail.PatchLabel,
+    },
+    Route{
+        "ListLabel",
+        "POST",
+        "/labelList",
+        gmail.ListLabel,
+    },
+    Route{
+        "CreateFilter",
+        "POST",
+        "/createFilter",
+        gmail.CreateFilter,
+    },
+    Route{
+        "DeleteFilter",
+        "POST",
+        "/deleteFilter",
+        gmail.DeleteFilter,
+    },
+    Route{
+        "FilterList",
+        "POST",
+        "/filterList",
+        gmail.FilterList,
+    },
 }
 
 //NewRouter func
