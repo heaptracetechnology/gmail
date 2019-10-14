@@ -82,7 +82,7 @@ $ omg run sendMail -a accessToken=<ACCESS_TOKEN> -a userId=<SENDER_EMAIL_ADDRESS
 ```
 ##### Create Label
 ```shell
-omg run createLabel -a accessToken=<ACCESS_TOKEN> -a userId=<EMAIL_ADDRESS> -a name=<LABEL_NAME> -a backgroundColor=<Label_BACKGROUND_COLOR> -a textColor=<Label_TEXT_COLOR> -a labelListVisibility=<LABEL_LIST_VISIBILITY> -a messageListVisibility=<M_LIST_VISIBILITY> -e CREDENTIAL_JSON=<BASE64_DATA_OF_CREDENTIAL_JSON_FILE>
+omg run createLabel -a accessToken=<ACCESS_TOKEN> -a userId=<EMAIL_ADDRESS> -a name=<LABEL_NAME> -a backgroundColor=<Label_BACKGROUND_COLOR> -a textColor=<Label_TEXT_COLOR> -a labelListVisibility=<LABEL_LIST_VISIBILITY> -a messageListVisibility=<MESSAGE_LIST_VISIBILITY> -e CREDENTIAL_JSON=<BASE64_DATA_OF_CREDENTIAL_JSON_FILE>
 ```
 ##### Delete Label:
 ```shell
@@ -90,7 +90,7 @@ omg run deleteLabel -a accessToken=<ACCESS_TOKEN> -a userId=<EMAIL_ADDRESS> -a l
 ```
 ##### Patch Label:
 ```shell
-omg run patchLabel -a accessToken=<ACCESS_TOKEN> -a userId=<EMAIL_ADDRESS> -a name=<LABEL_NAME> -a backgroundColor=<Label_BACKGROUND_COLOR> -a textColor=<Label_TEXT_COLOR> -a labelListVisibility=<LABEL_LIST_VISIBILITY> -a messageListVisibility=<M_LIST_VISIBILITY> -e CREDENTIAL_JSON=<BASE64_DATA_OF_CREDENTIAL_JSON_FILE>
+omg run patchLabel -a accessToken=<ACCESS_TOKEN> -a userId=<EMAIL_ADDRESS> -a name=<LABEL_NAME> -a backgroundColor=<Label_BACKGROUND_COLOR> -a textColor=<Label_TEXT_COLOR> -a labelListVisibility=<LABEL_LIST_VISIBILITY> -a messageListVisibility=<MESSAGE_LIST_VISIBILITY> -e CREDENTIAL_JSON=<BASE64_DATA_OF_CREDENTIAL_JSON_FILE>
 ```
 ##### List Label
 ```shell
