@@ -116,4 +116,4 @@ $ omg run subscribe receive mail -a userId=<EMAIL_ADDRESS> -a accessToken=<ACCES
 **Note**: the OMG CLI requires [Docker](https://docs.docker.com/install/) to be installed.
 
 ## License
-[MIT License](https://github.com/heaptracetechnology/gmail/blob/master/LICENSE).
+[MIT License](https://github.com/omg-services/gmail/blob/master/LICENSE).
