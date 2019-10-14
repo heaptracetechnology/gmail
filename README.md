@@ -8,8 +8,7 @@ An OMG service for Gmail, this service uses the gmail API and perform gmail oper
 
 ## Direct usage in [Storyscript](https://storyscript.io/):
 
-## NOTE:
-use scope "https://mail.google.com/" for send, receive and labels operation while authorization and for "filter operations" use scope "https://www.googleapis.com/auth/gmail.settings.sharing".
+**Note**: use scope "https://mail.google.com/" for send, receive and labels operation while authorization and for "filter operations" use scope "https://www.googleapis.com/auth/gmail.settings.sharing".
 
 ##### Authorization
 ```coffee
