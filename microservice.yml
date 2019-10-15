@@ -268,11 +268,11 @@ actions:
         required: true
         help: The email address of account holder.
       addLabelId:
-        type: list
+        type: string
         in: requestBody
         help: The label to add to the message.
       removeLabelId:
-        type: list
+        type: string
         in: requestBody
         help: The label to remove from the message.
       excludeChats:
