@@ -36,7 +36,7 @@ gmail deleteLabel accessToken:'access token' userId:'abc@example.com' labelId:'l
 ```
 ##### Patch Label:
 ```coffee
-gmail patchLabel accessToken:'access token' userId:'abc@example.com' name:'OMG Label' backgroundColor:'#fce8b3' textColor:'#d5ae49' labelListVisibility:'labelShow' messageListVisibility:'show' 
+gmail patchLabel accessToken:'access token' userId:'abc@example.com' labelId:'label Id' name:'OMG Label' backgroundColor:'#fce8b3' textColor:'#d5ae49' labelListVisibility:'labelShow' messageListVisibility:'show' 
 ```
 ##### List Label
 ```coffee
@@ -90,7 +90,7 @@ omg run deleteLabel -a accessToken=<ACCESS_TOKEN> -a userId=<EMAIL_ADDRESS> -a l
 ```
 ##### Patch Label:
 ```shell
-omg run patchLabel -a accessToken=<ACCESS_TOKEN> -a userId=<EMAIL_ADDRESS> -a name=<LABEL_NAME> -a backgroundColor=<Label_BACKGROUND_COLOR> -a textColor=<Label_TEXT_COLOR> -a labelListVisibility=<LABEL_LIST_VISIBILITY> -a messageListVisibility=<MESSAGE_LIST_VISIBILITY> -e CREDENTIAL_JSON=<BASE64_DATA_OF_CREDENTIAL_JSON_FILE>
+omg run patchLabel -a accessToken=<ACCESS_TOKEN> -a userId=<EMAIL_ADDRESS> -a labelId=<LABEL_ID> -a name=<LABEL_NAME> -a backgroundColor=<Label_BACKGROUND_COLOR> -a textColor=<Label_TEXT_COLOR> -a labelListVisibility=<LABEL_LIST_VISIBILITY> -a messageListVisibility=<MESSAGE_LIST_VISIBILITY> -e CREDENTIAL_JSON=<BASE64_DATA_OF_CREDENTIAL_JSON_FILE>
 ```
 ##### List Label
 ```shell
